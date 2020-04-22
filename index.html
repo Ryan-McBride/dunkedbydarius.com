@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>GET DUNKED</title>
+    <script
+      src="https://code.jquery.com/jquery-3.5.0.slim.min.js"
+      integrity="sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs="
+      crossorigin="anonymous"></script>
+    <script src="dist/titleEffect.jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="activate">
+      <div class="stuff">
+        <div class="container">
+          <div class="glitch" data-text="ACTIVATE">ACTIVATE</div>
+          <div class="glow">ACTIVATE</div>
+          <p class="subtitle"> I figured what I'd do is I'd dunk and I'd dunk and I'd never stop dunking until I dunked the entire world</p>
+        </div>
+        <div class="scanlines"></div>
+      </div>
+    </div>
+    <audio loop id="sound">
+      <source src="./dunked.mp3" type="audio/mpeg">
+      <source src="./dunked.ogg" type="audio/ogg">
+    </audio>
+  </body>
+</html>
+
+<script>
+
+  var start = 1;
+  var speed = 2500;
+
+  function getParams(startAttr, speedAttr) {
+    var params = window.document.getElementsByTagName('script');
+
+    for (var i = 0; i < params.length; i++) {
+      if (params[i].src.indexOf('title-scroll.js') !== -1) {
+        if (params[i].getAttribute(startAttr) !== null && params[i].getAttribute(startAttr) !== "") {
+          start = params[i].getAttribute(startAttr);
+        }
+
+        if (params[i].getAttribute(speedAttr) !== null && params[i].getAttribute(speedAttr) !== "") {
+          speed = params[i].getAttribute(speedAttr);
+        }
+
+        return;
+      }
+    }
+  }
+  $(document).ready(() => {
+    $('.activate').on('click', () => {
+      $('.stuff').remove();
+      $('body').css('background', 'none')
+      $('body').css('background-image', 'url("./dunked.gif")')
+      document.getElementById('sound').play(); 
+    })
+  })
+</script>
