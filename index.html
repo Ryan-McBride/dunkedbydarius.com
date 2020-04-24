@@ -55,8 +55,9 @@
   $(document).ready(() => {
     $('.activate').on('click', () => {
       $('.stuff').remove();
-      $('body').css('background', 'none')
-      $('body').css('background-image', 'url("./dunked.gif")')
+      $('body').css('background', 'none');
+      $('body').css('background-size', '50%');
+      $('body').css('background-image', 'url("./dunked.gif")');
       document.getElementById('sound').play(); 
     })
   })
